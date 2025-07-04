@@ -6,7 +6,7 @@
 body {
   height: 100vh;
 }
-.draw {
+canvas {
   position: fixed;
   top: 0;
   left: 0;
