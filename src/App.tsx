@@ -1,5 +1,7 @@
+import Experience from "./experience/experience";
+
 function App() {
-  return <>hello</>;
+  return <Experience />;
 }
 
 export default App;
