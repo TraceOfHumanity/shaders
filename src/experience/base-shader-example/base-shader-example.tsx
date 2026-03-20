@@ -11,6 +11,10 @@ const BaseShaderExample = () => {
           fragmentShader={fragmentShader}
         />
       </mesh>
+      <mesh position={[-2, 0, 0]}>
+        <boxGeometry />
+        <meshStandardMaterial color="red" />
+      </mesh>
     </>
   );
 };
