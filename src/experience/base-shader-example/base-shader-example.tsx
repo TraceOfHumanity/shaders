@@ -42,7 +42,8 @@ const BaseShaderExample = () => {
           vertexShader={vertexShader}
           fragmentShader={fragmentShader}
           uniforms={{ uTime: new Uniform(0) }}
-          wireframe={true}
+          side={DoubleSide}
+          // wireframe={true}
         />
       </mesh>
       <mesh position={[-2, 0, 0]}>
