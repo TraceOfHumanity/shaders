@@ -5,15 +5,22 @@ import {
   Float32BufferAttribute,
   Mesh,
   RawShaderMaterial,
+  TextureLoader,
+  // TextureLoader,
   Uniform,
+  Vector2,
 } from "three";
 import { useEffect, useRef } from "react";
 import { useFrame } from "@react-three/fiber";
+// import { useTexture } from "@react-three/drei";
 
 const BaseShaderExample = () => {
   const meshRef = useRef<Mesh>(null);
   const materialRef = useRef<RawShaderMaterial>(null);
   // const [vertices, setVertices] = useState<Float32Array>(new Float32Array([]));
+  const texture = new TextureLoader().load(
+    "https://images.pexels.com/photos/36299703/pexels-photo-36299703.jpeg",
+  );
 
   useFrame((state) => {
     const material = materialRef.current;
@@ -31,17 +38,22 @@ const BaseShaderExample = () => {
       }
       // setVertices(new Float32Array(vertices));
       geometry.setAttribute("aRandom", new Float32BufferAttribute(vertices, 1));
+      console.log("uv", geometry.attributes.uv);
     }
   }, [meshRef]);
   return (
     <>
-      <mesh ref={meshRef}>
+      <mesh ref={meshRef} scale={[1, 2, 1]}>
         <planeGeometry args={[1, 1, 16, 16]} />
         <rawShaderMaterial
           ref={materialRef}
           vertexShader={vertexShader}
           fragmentShader={fragmentShader}
-          uniforms={{ uTime: new Uniform(0) }}
+          uniforms={{
+            uTime: new Uniform(0),
+            uTexture: new Uniform(texture),
+            uFrequency: { value: new Vector2(10, 5) },
+          }}
           side={DoubleSide}
           // wireframe={true}
         />
