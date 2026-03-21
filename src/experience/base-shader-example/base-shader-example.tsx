@@ -1,13 +1,19 @@
 import vertexShader from "../../shaders/base-shader/vertex.vert?raw";
 import fragmentShader from "../../shaders/base-shader/fragment.frag?raw";
-import { DoubleSide, Mesh, RawShaderMaterial, Uniform } from "three";
-import { useEffect, useRef, useState } from "react";
+import {
+  DoubleSide,
+  Float32BufferAttribute,
+  Mesh,
+  RawShaderMaterial,
+  Uniform,
+} from "three";
+import { useEffect, useRef } from "react";
 import { useFrame } from "@react-three/fiber";
 
 const BaseShaderExample = () => {
   const meshRef = useRef<Mesh>(null);
   const materialRef = useRef<RawShaderMaterial>(null);
-  const [vertices, setVertices] = useState<Float32Array>(new Float32Array([]));
+  // const [vertices, setVertices] = useState<Float32Array>(new Float32Array([]));
 
   useFrame((state) => {
     const material = materialRef.current;
@@ -23,7 +29,8 @@ const BaseShaderExample = () => {
       for (let i = 0; i < vertices.length; i++) {
         vertices[i] = Math.random();
       }
-      setVertices(new Float32Array(vertices));
+      // setVertices(new Float32Array(vertices));
+      geometry.setAttribute("aRandom", new Float32BufferAttribute(vertices, 1));
     }
   }, [meshRef]);
   return (
@@ -35,6 +42,7 @@ const BaseShaderExample = () => {
           vertexShader={vertexShader}
           fragmentShader={fragmentShader}
           uniforms={{ uTime: new Uniform(0) }}
+          wireframe={true}
         />
       </mesh>
       <mesh position={[-2, 0, 0]}>
