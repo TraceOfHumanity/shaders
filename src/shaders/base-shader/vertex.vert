@@ -5,7 +5,6 @@ attribute vec3 position;
 attribute float aRandom;
 attribute vec2 uv;
 
-
 uniform float uTime;
 uniform vec2 uFrequency;
 

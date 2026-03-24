@@ -12,12 +12,10 @@ import {
 } from "three";
 import { useEffect, useRef } from "react";
 import { useFrame } from "@react-three/fiber";
-// import { useTexture } from "@react-three/drei";
 
 const BaseShaderExample = () => {
   const meshRef = useRef<Mesh>(null);
   const materialRef = useRef<RawShaderMaterial>(null);
-  // const [vertices, setVertices] = useState<Float32Array>(new Float32Array([]));
   const texture = new TextureLoader().load(
     "https://images.pexels.com/photos/36299703/pexels-photo-36299703.jpeg",
   );
@@ -36,7 +34,6 @@ const BaseShaderExample = () => {
       for (let i = 0; i < vertices.length; i++) {
         vertices[i] = Math.random();
       }
-      // setVertices(new Float32Array(vertices));
       geometry.setAttribute("aRandom", new Float32BufferAttribute(vertices, 1));
       console.log("uv", geometry.attributes.uv);
     }
@@ -55,7 +52,6 @@ const BaseShaderExample = () => {
             uFrequency: { value: new Vector2(10, 5) },
           }}
           side={DoubleSide}
-          // wireframe={true}
         />
       </mesh>
       <mesh position={[-2, 0, 0]}>
