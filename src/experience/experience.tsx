@@ -6,7 +6,7 @@ import ShaderPatterns from "./shader-patterns/shader-patterns";
 
 const Experience = () => {
   return (
-    <Canvas>
+    <Canvas camera={{ position: [0, 0, 1] }}>
       <OrbitControls />
       <Ligth />
       {/* <BaseShaderExample /> */}
