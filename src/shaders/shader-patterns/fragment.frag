@@ -263,8 +263,27 @@ void main() {
     // float strength = cnoise(vUv * 10.0);
     // gl_FragColor = vec4(vec3(strength), 1.0);
 
-    // pattern 46
-    float strength = cnoise(vUv * 10.0);
-    gl_FragColor = vec4(vec3(strength), 1.0);
+    // // pattern 46
+    // float strength = step(0.0, cnoise(vUv * 10.0));
+    // gl_FragColor = vec4(vec3(strength), 1.0);
+
+    // // pattern 47
+    // float strength = 1.0 - abs(cnoise(vUv * 10.0));
+    // gl_FragColor = vec4(vec3(strength), 1.0);
+
+    // // pattern 48
+    // float strength = sin(cnoise(vUv * 10.0) * 20.0);
+    // gl_FragColor = vec4(vec3(strength), 1.0);
+
+    // // pattern 49
+    // float strength = step(0.98, sin(cnoise(vUv * 10.0) * 20.0));
+    // gl_FragColor = vec4(vec3(strength), 1.0);
+
+    // pattern 50
+    float strength = cnoise(vUv * 10.0) * 0.5 + 0.5;
+    vec3 blackColor = vec3(0.0);
+    vec3 uvColor = vec3(vUv, 1.0);
+    vec3 mixedColor = mix(blackColor, uvColor, strength);
+    gl_FragColor = vec4(mixedColor, 1.0);
 
 }
