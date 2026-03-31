@@ -9,7 +9,7 @@ const ShaderPatterns = () => {
 
   return (
     <>
-      <mesh ref={meshRef} scale={[1, 1, 1]}>
+      <mesh ref={meshRef}>
         <planeGeometry args={[1, 1, 16, 16]} />
         <shaderMaterial
           ref={materialRef}
